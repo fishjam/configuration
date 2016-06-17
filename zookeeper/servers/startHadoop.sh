@@ -23,7 +23,7 @@ if [ -d "${basepath}/$1" ]
 then
   ZOO_LOG_DIR=${basepath}/$1/log; export ZOO_LOG_DIR
   ZOOCFGDIR="${basepath}/$1/conf"; export ZOOCFGDIR
-  #sed -i "s/dataDir=.*/dataDir=${basepath}\/data/g" "${ZOOCFGDIR}/zoo.cfg"
+  sed -i "s:dataDir=.*:dataDir=${basepath}/$1/data:g" "${ZOOCFGDIR}/zoo.cfg"
   shift
   ${ZK_SERVER_SH} ${@}
 else
